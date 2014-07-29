@@ -1,0 +1,12 @@
+<h1>Requests#new</h1>
+<p>Find me in app/views/requests/new.html.erb</p>
+
+
+<%= form_for(@request) do |t| %>
+
+<%= t.label :search %>
+<%=t.text_field :artist, placeholder: "artist"  %>
+<%=t.text_field :city, placeholder: "city"  %>
+<%=t.text_field :state, placeholder: "state"  %>
+<%=t.submit "brewmaster"%>
+<%end %>

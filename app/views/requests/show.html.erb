@@ -1,0 +1,6 @@
+<ul>
+<% @results.each do |event| %>
+<li><%= event["title"]%></li>
+<li><%= event["formatted_datetime"]%></li>
+<%end%>
+</ul>
