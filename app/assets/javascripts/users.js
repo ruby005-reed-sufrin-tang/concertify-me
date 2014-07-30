@@ -7,7 +7,10 @@ $( document ).ready(function(){
       type: 'POST',
       data: $form.serialize(),
       dataType: 'script',
-      success: function(){console.log('Email sent!');},
+      success: function(){
+        $form.find('input[id="email_email_address"]').val("");
+        console.log('Email sent!');
+      },
       failure: function(){alert('Email could not be sent!');}
     });
   });
