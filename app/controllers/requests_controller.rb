@@ -29,8 +29,6 @@ class RequestsController < ApplicationController
                                      searched_artist_id: artist.id,
                                      exact_match: exact_match)
     end
-    # Tell the UserMailer to send a welcome email after save
-    UserMailer.example_email(@user).deliver
     redirect_to request_url(@request)
   end
 

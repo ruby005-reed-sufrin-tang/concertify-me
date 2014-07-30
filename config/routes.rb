@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy', :as => :signout
 
   post '/event_users' => 'event_users#create'
+  post '/emails' => 'emails#create'
  
 
   resources :requests
