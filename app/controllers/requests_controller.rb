@@ -2,6 +2,11 @@ class RequestsController < ApplicationController
 
   SEARCH = [:artist,:city,:state]
 
+
+  def index 
+
+  end
+
   def new
     @request = Request.new
 

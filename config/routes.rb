@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
 
+  resources :sessions
+  resources :users, :only => [:new, :show, :index]
 
-  root 'requests#new'
+  root 'users#new'
+  
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'signout' => 'sessions#destroy', :as => :signout
+
+ 
 
   resources :requests
 
