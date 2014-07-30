@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def example_email(user)
     @user = user
-    @url  = 'http://example.com/login'
+    @url  = 'concertify.me'
     mail(to: @user.email, subject: 'Your Concertify Calendar Invite')
   end
 
