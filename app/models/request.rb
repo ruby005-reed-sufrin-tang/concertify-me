@@ -15,3 +15,4 @@ class Request < ActiveRecord::Base
     json = JSON.load(open(link){|io| data= io.read}[11..-3])
   end
 end
+
