@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id     
     redirect_to root_url, :notice => "Signed in!"
 
+    request.env["omniauth.auth"]["credentials"]["token"]
+
+     request.env["omniauth.auth"]["credentials"]["refresh_token"]
+
   end
  
   def destroy
