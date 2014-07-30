@@ -1,0 +1,13 @@
+<p><%= @user.name %></p>
+<p><%= @user.events.count %> events saved</p>
+<ul>
+<% @user.events.each do |event| %>
+  
+  <li><%= event.formatted_datetime %></li>
+  <ul>
+  <li><%= event.title %></li>
+  <li><%= event.location %></li>
+  </ul>
+<% end %>
+</ul>
+<button id="add_to_calendar">Add to my Google calendar!</button>
