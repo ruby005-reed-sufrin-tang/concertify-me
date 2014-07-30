@@ -5,6 +5,6 @@ class EmailsController < ApplicationController
     @user.email = params[:email][:email_address]
     @user.save
     UserMailer.example_email(@user).deliver
-    redirect_to user_path(current_user)
+    render json:{}
   end
 end

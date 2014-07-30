@@ -6,7 +6,9 @@ $( document ).ready(function(){
       url: '/emails',
       type: 'POST',
       data: $form.serialize(),
-      dataType: 'script'
+      dataType: 'script',
+      success: function(){console.log('Email sent!');},
+      failure: function(){alert('Email could not be sent!');}
     });
   });
 });
