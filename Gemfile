@@ -34,6 +34,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'omniauth-spotify'
+
+gem 'figaro'
+
 gem "sqlite3"
 
 group :test, :development do
@@ -46,6 +50,11 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
+  gem 'omniauth-spotify'
+
+gem 'figaro'
+
+gem "sqlite3"
   
   gem "pry"
   gem "guard-rspec", require: false
@@ -59,5 +68,10 @@ group :production do
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
+gem 'omniauth-spotify'
+
+gem 'figaro'
+
+gem "sqlite3"
 gem "devise"
 gem "airbrake"
