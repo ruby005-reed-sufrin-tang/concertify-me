@@ -1,12 +1,9 @@
-<h1>Requests#new</h1>
-<p>Find me in app/views/requests/new.html.erb</p>
-
-
+<h1>Search for an artist to see shows near you</h1>
 <%= form_for(@request) do |t| %>
 
 <%= t.label :search %>
 <%=t.text_field :artist, placeholder: "artist"  %>
 <%=t.text_field :city, placeholder: "city"  %>
 <%=t.text_field :state, placeholder: "state"  %>
-<%=t.submit "brewmaster"%>
+<%=t.submit "Find Shows"%>
 <%end %>

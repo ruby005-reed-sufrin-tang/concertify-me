@@ -1,6 +1,22 @@
+<h2><%= @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
+<h3><%= link_to 'Search again', new_request_path %></h3>
+<h2>Search results for <%= @request.artist %></h2>
 <ul>
-<% @results.each do |event| %>
-<li><%= event["title"]%></li>
-<li><%= event["formatted_datetime"]%></li>
-<%end%>
+  <% @artist_events.each do |event| %>
+    <li><%= event.formatted_datetime %></li>
+    <ul>
+      <li><%= event.title %></li>
+      <li><%= event.location %></li>
+    </ul>
+  <% end %>
+</ul>
+<h2>Related events</h2>
+<ul>
+  <% @related_events.each do |event| %>
+    <li><%= event.formatted_datetime %></li>
+    <ul>
+      <li><%= event.title %></li>
+      <li><%= event.location %></li>
+    </ul>
+  <% end %>
 </ul>

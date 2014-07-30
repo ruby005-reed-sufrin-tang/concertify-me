@@ -34,7 +34,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'omniauth-spotify'
 gem "sqlite3"
+gem "google-api-client"
 
 group :test, :development do
   gem "rspec-rails"
@@ -46,14 +48,14 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "simplecov"
   gem "database_cleaner"
-  
+  gem 'figaro'  
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
 end
 
 group :production do
- # gem "pg"
+  gem "pg"
   gem "google-analytics-rails"
   gem "rails_12factor"
 end
