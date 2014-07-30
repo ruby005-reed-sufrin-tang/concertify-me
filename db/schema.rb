@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730185302) do
+ActiveRecord::Schema.define(version: 20140730193608) do
 
   create_table "artist_requests", force: true do |t|
     t.integer  "request_id"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20140730185302) do
     t.datetime "updated_at"
     t.integer  "searched_artist_id"
     t.boolean  "exact_match"
+  end
+
+  create_table "event_users", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
