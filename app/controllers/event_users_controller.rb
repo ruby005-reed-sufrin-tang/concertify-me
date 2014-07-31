@@ -4,7 +4,6 @@ class EventUsersController < ApplicationController
       next if key == "user_id" 
       event_id = key.split("_").last.to_i
       if value=="0" && (event_to_delete = EventUser.find_by(event_id: event_id, user_id: current_user.id))
-        binding.pry
         EventUser.destroy(event_to_delete.id)
       elsif value=="1"
         EventUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
