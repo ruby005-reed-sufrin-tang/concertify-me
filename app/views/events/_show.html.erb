@@ -1,6 +1,6 @@
 <li><%= event.formatted_datetime %></li>
   <ul>
-    <li><%= event.title %></li>
+    <li><%= link_to event.title, event.ticket_url, :target => "_blank" %></li>
     <% if show_save %>
       <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
       <%= f.label :save_event%>

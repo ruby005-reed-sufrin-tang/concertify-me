@@ -20,7 +20,8 @@ class RequestsController < ApplicationController
     results.each do |result|
       event = Event.find_or_create_by(title: result["title"],
                                       formatted_datetime: result["formatted_datetime"],
-                                      location: result["formatted_location"])
+                                      location: result["formatted_location"],
+                                      ticket_url: result["ticket_url"])
       if !event.datetime
         event.datetime = result["datetime"]
         event.save
