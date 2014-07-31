@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :users, :only => [:new, :show, :index]
+  resources :static_pages, :only => [:index, :about]
 
-  root 'users#new'
+  root 'static_pages#index'
+  get '/about' => 'static_pages#about'
   
   get 'auth/:provider/callback' => 'sessions#create'
   get 'signout' => 'sessions#destroy', :as => :signout
