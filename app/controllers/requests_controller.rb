@@ -6,12 +6,14 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = Request.new  
-    @spotify_artists = current_user.all_playlists
-    @spotify_artists.each  do |x|
-      current_user.spotify_artists.create(name: x) 
+    @request = Request.new
+    @spotify_artists = current_user.spotify_artists.to_a.collect {|artist| artist.name}
+    if @spotify_artists.empty?
+      @spotify_artists = current_user.all_playlists
+      @spotify_artists.each  do |x|
+        current_user.spotify_artists.create(name: x) 
+      end
     end
-
   end
 
   def create
