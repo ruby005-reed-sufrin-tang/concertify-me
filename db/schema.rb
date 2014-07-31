@@ -26,11 +26,6 @@ ActiveRecord::Schema.define(version: 20140731143854) do
     t.datetime "updated_at"
   end
 
-  create_table "emails", force: true do |t|
-    t.integer "user_id"
-    t.string  "email_address"
-  end
-
   create_table "event_requests", force: true do |t|
     t.integer  "request_id"
     t.integer  "event_id"

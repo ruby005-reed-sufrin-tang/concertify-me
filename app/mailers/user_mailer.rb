@@ -7,4 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Your Concertify Calendar Invite')
   end
 
+  def event_email(user, event)
+    @user = user
+    @event = event
+    @url  = 'concertify.me'
+    mail(to: @user.email, subject: "@event.title")
+  end
+
 end
