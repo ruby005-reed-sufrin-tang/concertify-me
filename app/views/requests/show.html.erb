@@ -1,3 +1,8 @@
+
+<%=@spotify_events%>
+
+
+
 <h2><%= @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
 <h3><%= link_to 'Search again', new_request_path %></h3>
 
@@ -30,5 +35,6 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "Save selected events", :class => "btn btn-success" %>
   <% end %>
+
 <% end %>
 

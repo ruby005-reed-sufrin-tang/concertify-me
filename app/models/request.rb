@@ -15,6 +15,19 @@ class Request < ActiveRecord::Base
     @results = JSON.load(open(link){|io| data= io.read}[11..-3])
   end
 
+  def spotify_artists_call(checkboxes)
+    city = self.city.gsub(" ","+")
+    state = self.state.gsub(" ","+")
+    link = "http://api.bandsintown.com/events/search?artists[]="
+    link += checkboxes.join("&artists[]=").gsub(" ","%20")
+    link.gsub!("'","%27")
+    link += "&format=json&app_id=concertify&location="
+    link += city +","
+    link += state
+    @results = JSON.load(open(link))
+  end
+
+
   def create_events(search_artist)
 
     @results.each do |result|
