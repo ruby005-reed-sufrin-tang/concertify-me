@@ -15,6 +15,6 @@
 <%= form_for Email.new do |f|%>
 <%= f.hidden_field :user_id, :value => @user.id %>
 <%= f.text_field :email_address, :placeholder => "Email address" %>
-<%= f.submit :add_to_calendar, :value => "Send me a Google invite!" %>
+<%= f.submit :add_to_calendar, :id => 'add_to_calendar', :value => "Send me a Google invite!" %>
 <% end %>
 </p>
