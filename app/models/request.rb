@@ -9,9 +9,7 @@ class Request < ActiveRecord::Base
     artist_name = self.artist.gsub(" ","%20")
     city = self.city.gsub(" ","+")
     state = self.state.gsub(" ","+")
-
-    link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=concertify&api_version=2.0&location=#{city},#{state}&callback=showEvents"
-    
+    link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=concertify&api_version=2.0&location=#{city},#{state}&callback=showEvents"    
     @results = JSON.load(open(link){|io| data= io.read}[11..-3])
   end
 
@@ -52,18 +50,18 @@ class Request < ActiveRecord::Base
     end.flatten
   end
 
-  def spotify_artists
+  # def spotify_artists
 
-      current_user.all_playlists.collect do |artist_name|
-      city = self.city.gsub(" ","+")
-      state = self.state.gsub(" ","+")
-      link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=somuchpoop&api_version=2.0&location=#{city},#{state}&callback=showEvents"
-      encoded_url = URI.encode(link)
-      thing = URI.parse(encoded_url)
-      json = JSON.load(open(thing){|io| data= io.read}[11..-3])
-    end 
+  #     current_user.all_playlists.collect do |artist_name|
+  #     city = self.city.gsub(" ","+")
+  #     state = self.state.gsub(" ","+")
+  #     link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=somuchpoop&api_version=2.0&location=#{city},#{state}&callback=showEvents"
+  #     encoded_url = URI.encode(link)
+  #     thing = URI.parse(encoded_url)
+  #     json = JSON.load(open(thing){|io| data= io.read}[11..-3])
+  #   end 
 
-  end
+  # end
 
 end
 
