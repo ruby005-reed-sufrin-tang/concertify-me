@@ -1,0 +1,10 @@
+<p><%= @events.count %> events saved</p>
+
+<ul>
+<% @events.each do |event| %>
+  <%= render 'events/show', {:event => event, :show_save => false} %>
+<% end %>
+</ul>
+<% if @events.count == 0 %>
+  <%= link_to 'Try a search', new_request_path %>
+<% end %>

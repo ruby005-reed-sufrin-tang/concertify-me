@@ -1,19 +1,30 @@
-<li><%= event.formatted_datetime %></li>
-  <ul>
-    <li><%= image_tag event.artists.first.thumb_url %> <%= event.title %>
-    <li><%= link_to 'Buy Tickets', event.ticket_url, :target => "_blank" %> | <%= link_to "RSVP on Facebook", event.facebook_rsvp_url, :target => "_blank" %></li>
-    <% if show_save %>
-      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
-      <%= f.label :save_event%>
-    <% else %>
-      <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete do |f| %>
-        <%= f.hidden_field :event_id, :value => event.id %>
-        <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= event.formatted_datetime %></h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <li class="event-title"><%= image_tag event.artists.first.thumb_url %> <%= event.title %></li>
+
+      <% if show_save %>
+        <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
+        <%= f.label :save_event%>
+      <% else %>
+        <form action="<%= event.ticket_url %>" target="_blank" class="event-form">
+          <input type="submit" value="Buy Tickets" class="btn btn-success">
+        </form>
+        <form action="<%= event.facebook_rsvp_url %>" target="_blank" class="event-form">
+          <input type="submit" value="RSVP on Facebook" class="btn btn-primary">
+        </form>
+        <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete, :html => {:class => "event-form"} do |f| %>
+          <%= f.hidden_field :event_id, :value => event.id %>
+          <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
+        <% end %>
+          <%= form_for Email.new, :method => :post, :html => {:class => "event-form"} do |f| %>
+          <%= f.hidden_field :event_id, :value => event.id %>
+          <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-info" %>
+          <% end %>
       <% end %>
-      <br>
-       <%= form_for Email.new, :method => :post do |f| %>
-        <%= f.hidden_field :event_id, :value => event.id %>
-        <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-primary" %>
-      <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
+</div>
