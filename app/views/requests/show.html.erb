@@ -1,15 +1,12 @@
-<h1>Your spotify artists</h1>
- <%@work.each do |event|%>
+<!--<h1>Your spotify artists</h1>
+ <%#@work.each do |event|%>
 
-<li> <%=event[0]["title"]%> </li>
-<li><%=event[0]["formatted_datetime"]%></li>
-<li><%=event[0]["location "]%></li>
-<%end%>
+<li> <%#=event[0]["title"]%> </li>
+<li><%#=event[0]["formatted_datetime"]%></li>
+<li><%#=event[0]["location "]%></li>
+<%#end%>-->
 <h2><%= @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
 <h3><%= link_to 'Search again', new_request_path %></h3>
-
-
-
 
 <%= form_for EventUser.new do |f| %>
   <h2>Search results for <%= @request.artist %></h2>

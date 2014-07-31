@@ -3,4 +3,6 @@ class Event < ActiveRecord::Base
   has_many :requests, through: :event_requests
   has_many :event_users
   has_many :users, through: :event_users
+  has_many :artist_events
+  has_many :artists, through: :artist_events
 end

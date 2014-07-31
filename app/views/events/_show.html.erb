@@ -1,6 +1,8 @@
 <li><%= event.formatted_datetime %></li>
   <ul>
-    <li><%= link_to event.title, event.ticket_url, :target => "_blank" %></li>
+    <li><%= image_tag event.artists.first.thumb_url %> <%= event.title %>
+    <li><%= link_to 'Buy Tickets', event.ticket_url, :target => "_blank" %></li>
+    <li><%= link_to "RSVP on Facebook", event.facebook_rsvp_url, :target => "_blank" %></li>
     <% if show_save %>
       <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
       <%= f.label :save_event%>
