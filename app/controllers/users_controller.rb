@@ -2,10 +2,20 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show  
-   @events = Event.joins(:event_users).where(:event_users => {:user_id => current_user.id}).order(:datetime)
+   @user = current_user
   end
   
   def new
+  end
+
+  def update
+    if params[:id].to_i == current_user.id
+      @user = current_user
+      @user.email = params[:user][:email]
+      @user.save
+    end
+    flash[:notice] = "Email address updated"
+    redirect_to user_path(@user)
   end
 
   private

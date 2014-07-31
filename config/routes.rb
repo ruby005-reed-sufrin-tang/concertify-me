@@ -2,12 +2,14 @@ Rails.application.routes.draw do
 
 
   resources :sessions
-  resources :users, :only => [:show, :index]
+  resources :users, :only => [:show, :index] do
+    resources :events
+  end
   resources :static_pages, :only => [:index, :about]
 
   root 'static_pages#index'
   get '/about' => 'static_pages#about'
-  
+
   get 'auth/:provider/callback' => 'sessions#create'
   get 'signout' => 'sessions#destroy', :as => :signout
 
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   delete '/event_user' => 'event_users#delete'
   post '/emails' => 'emails#create'
  
-
+  patch '/users/:id' => 'users#update'
   resources :requests
 
 

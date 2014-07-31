@@ -27,7 +27,7 @@
             <li><a href="/about">About</a></li>
             <% if logged_in? %>
               <li><%= link_to 'Search', new_request_path %></li>
-              <li><%= link_to 'Events', user_path(current_user) %></li>
+              <li><%= link_to 'Events', user_events_path(current_user) %></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to current_user.name, user_path(current_user) %></li>
