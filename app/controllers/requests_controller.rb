@@ -19,9 +19,12 @@ class RequestsController < ApplicationController
 
     results.each do |result|
       event = Event.find_or_create_by(title: result["title"],
-                                      datetime: result["datetime"],
                                       formatted_datetime: result["formatted_datetime"],
                                       location: result["formatted_location"])
+      if !event.datetime
+        event.datetime = result["datetime"]
+        event.save
+      end
 
       exact_match = ((result["artists"].select{|result_artist| result_artist["name"] == artist.name}).count >= 1)
       

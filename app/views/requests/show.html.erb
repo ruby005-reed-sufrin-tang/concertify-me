@@ -9,8 +9,7 @@
     <ul>
       <li><%= event.title %></li>
       <li><%= event.location %></li>
-      <li><%= event.id %></li>
-      <%= f.check_box "save_#{event.id}".to_sym, :checked => false %>
+      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
       <%= f.label :save_event%>
     </ul>
   <% end %>
@@ -22,12 +21,12 @@
     <ul>
       <li><%= event.title %></li>
       <li><%= event.location %></li>
-      <%= f.check_box "save_#{event.id}".to_sym, :checked => false %>
+      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
       <%= f.label :save_event%>
     </ul>
   <% end %>
 </ul>
 
 <%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit "Save selected events" %>
+<%= f.submit "Save selected events", :class => "btn btn-success" %>
 <% end %>
