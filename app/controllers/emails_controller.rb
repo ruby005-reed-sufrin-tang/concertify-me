@@ -8,4 +8,7 @@ class EmailsController < ApplicationController
     UserMailer.example_email(@user).deliver
     render json:{}
   end
+
+  def new
+  end
 end

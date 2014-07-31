@@ -10,8 +10,9 @@
         <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
       <% end %>
       <br>
-       <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :post do |f| %>
+       <%= form_for Email.find_by(:user_id => current_user.id), :method => :post do |f| %>
         <%= f.hidden_field :event_id, :value => event.id %>
+        <%= f.hidden_field :user_email, :value => current_user.email %>
         <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-primary" %>
       <% end %>
     <% end %>

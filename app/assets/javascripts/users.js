@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-  $('#add_to_calendar').click(function(e){
+  $('#event_email').click(function(e){
     e.preventDefault();
     var $form = $(this).closest('form');
     $.ajax({
