@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     playlists = JSON.load(open("https://api.spotify.com/v1/users/#{user}/playlists/","Authorization" => "Bearer #{token}"))["items"].collect {|x| x["tracks"]["href"]}
     artists = playlists.collect do |x|
       JSON.load(open("#{x}","Authorization" => "Bearer #{token}"))["items"].collect { |x| x["track"]["artists"][0]["name"]}.uniq
-    end.flatten
+    end.flatten.uniq
   end
 
 end
