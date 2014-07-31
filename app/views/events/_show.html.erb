@@ -8,7 +8,12 @@
     <% else %>
       <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete do |f| %>
         <%= f.hidden_field :event_id, :value => event.id %>
-        <%= f.submit "Delete", :id => 'delete_event', :class => "btn btn-danger" %>
+        <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
+      <% end %>
+      <br>
+       <%= form_for Email.new, :method => :post do |f| %>
+        <%= f.hidden_field :event_id, :value => event.id %>
+        <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-primary" %>
       <% end %>
     <% end %>
   </ul>
