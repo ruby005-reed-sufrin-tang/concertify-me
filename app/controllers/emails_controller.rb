@@ -5,6 +5,7 @@ class EmailsController < ApplicationController
    #binding.pry
     @user = current_user
     @event = Event.find(params[:email][:event_id])
+
    
     UserMailer.example_email(@user, @event).deliver
     render json:{}

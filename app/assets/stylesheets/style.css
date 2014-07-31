@@ -59,3 +59,13 @@ body {
 h2.center {
   text-align: center;
 }
+
+#error_messages_display {
+  height:0px;
+  width:0px;
+  color:red;
+  padding:10px;
+  border:2px dashed red;
+  display:none;
+}
+

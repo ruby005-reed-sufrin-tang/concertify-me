@@ -1,3 +1,4 @@
+
 <li><%= event.formatted_datetime %></li>
   <ul>
     <li><%= image_tag event.artists.first.thumb_url %> <%= event.title %>
@@ -13,7 +14,8 @@
       <br>
        <%= form_for Email.new, :method => :post do |f| %>
         <%= f.hidden_field :event_id, :value => event.id %>
-        <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-primary" %>
+        <%= f.hidden_field :user_email, :value => current_user.email %>
+        <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-info" %>
       <% end %>
     <% end %>
   </ul>
