@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140731001115) do
-=======
-ActiveRecord::Schema.define(version: 20140731143854) do
->>>>>>> 2d2a76f5c365f59883e5c3b1ea3baedb5865c79b
+ActiveRecord::Schema.define(version: 20140731151348) do
+
+  create_table "artist_events", force: true do |t|
+    t.integer  "artist_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "artist_requests", force: true do |t|
     t.integer  "request_id"
@@ -28,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140731143854) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumb_url"
   end
 
   create_table "event_requests", force: true do |t|
@@ -54,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140731143854) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ticket_url"
+    t.string   "facebook_rsvp_url"
   end
 
   create_table "requests", force: true do |t|
@@ -71,7 +76,6 @@ ActiveRecord::Schema.define(version: 20140731143854) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.string   "token"
   end
 
 end
