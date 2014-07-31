@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   def all_playlists
     user =  self.uid 
     link = "https://api.spotify.com/v1/users/#{user}/playlists"
-    json = JSON.load(open(link){|io| data= io.read})
+    token = self.token
+    playlists = JSON.load(open("https://api.spotify.com/v1/users/#{user}/playlists/","Authorization" => "Bearer #{token}"))["items"].collect {|x| x["tracks"]["href"]}
+    artists = playlists.collect do |x|
+      JSON.load(open("#{x}","Authorization" => "Bearer #{token}"))["items"].collect { |x| x["track"]["artists"][0]["name"]}.uniq
+    end.flatten
   end
+
 end
