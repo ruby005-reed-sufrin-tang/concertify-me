@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730214805) do
+ActiveRecord::Schema.define(version: 20140731001115) do
 
   create_table "artist_requests", force: true do |t|
     t.integer  "request_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140730214805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.string   "token"
   end
 
 end
