@@ -1,18 +1,14 @@
-<p><%= @user.events.count %> events saved</p>
+<p><%= @events.count %> events saved</p>
 <ul>
-<% @user.events.each do |event| %>
-  <li><%= event.formatted_datetime %></li>
-  <ul>
-    <li><%= event.title %></li>
-    <li><%= event.location %></li>
-  </ul>
+<% @events.each do |event| %>
+  <%= render 'events/show', {:event => event, :show_save => false} %>
 <% end %>
 </ul>
-<% if @user.events.count > 0 %>
+<% if @events.count > 0 %>
 <br>
 <p>
 <%= form_for User.new do |f|%>
-<%= f.hidden_field :id, :value => @user.id %>
+<%= f.hidden_field :id, :value => current_user.id %>
 <%= f.text_field :email, :placeholder => "Email address" %>
 <%= f.submit :add_to_calendar, :id => 'add_to_calendar', :value => "Send me a Google invite!", :class => "btn btn-success" %>
 <% end %>

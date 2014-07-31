@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @events = Event.joins(:event_users).where(:event_users => {:user_id => current_user.id}).order(:datetime)
   end
   
   def new

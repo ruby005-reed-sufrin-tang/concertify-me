@@ -10,13 +10,7 @@
   <% end %>
   <ul>
     <% @artist_events.each do |event| %>
-      <li><%= event.formatted_datetime %></li>
-      <ul>
-        <li><%= event.title %></li>
-        <li><%= event.location %></li>
-        <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
-        <%= f.label :save_event%>
-      </ul>
+      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
     <% end %>
   </ul>
   <h2>Recommended events</h2>
@@ -27,12 +21,7 @@
   <% end %>
   <ul>
     <% @related_events.each do |event| %>
-      <li><%= event.formatted_datetime %></li>
-      <ul>
-        <li><%= event.title %></li>
-        <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
-        <%= f.label :save_event%>
-      </ul>
+      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
     <% end %>
   </ul>
   <% if @artist_events.any? || @related_events.any? %>
