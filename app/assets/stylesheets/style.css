@@ -1,7 +1,5 @@
-.navbar-right {
-  float: right;
-}
-
-.navbar-lift {
-  float: left;
+.footer {
+  margin-top: 35%;
+  text-align: center;
+  font-size: 14px;
 }
