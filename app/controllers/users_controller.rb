@@ -2,8 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @user = User.find(params[:id])
-    @poop = @user.all_playlists
+   @spotify_artists = current_user.all_playlists
+   
+    
   end
   
   def new
