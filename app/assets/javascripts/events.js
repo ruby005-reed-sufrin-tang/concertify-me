@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-  $('#email_event').click(function(e){
+  $('.email_event').click(function(e){
     e.preventDefault();
     var $form = $(this).closest('form');
    var userEmail = $form.find("#email_user_email").val();
