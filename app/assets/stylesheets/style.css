@@ -59,3 +59,13 @@ body {
 h2.center {
   text-align: center;
 }
+
+li.event-title {
+  list-style-type: none;
+}
+
+
+
+.event-form {
+  display: inline;
+}
