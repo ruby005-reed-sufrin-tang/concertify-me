@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731160436) do
+ActiveRecord::Schema.define(version: 20140731171626) do
+
+  create_table "artist_events", force: true do |t|
+    t.integer  "artist_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "artist_requests", force: true do |t|
     t.integer  "request_id"
@@ -24,11 +31,13 @@ ActiveRecord::Schema.define(version: 20140731160436) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumb_url"
   end
 
   create_table "emails", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "event_requests", force: true do |t|
@@ -55,12 +64,20 @@ ActiveRecord::Schema.define(version: 20140731160436) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ticket_url"
+    t.string   "facebook_rsvp_url"
   end
 
   create_table "requests", force: true do |t|
     t.string   "city"
     t.string   "state"
     t.string   "artist"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spotify_artists", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

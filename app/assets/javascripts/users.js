@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-  $('#event_email').click(function(e){
+  $('#example_email').click(function(e){
     e.preventDefault();
     var $form = $(this).closest('form');
     $.ajax({
