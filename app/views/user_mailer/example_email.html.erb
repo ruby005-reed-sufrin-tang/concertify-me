@@ -1,16 +1,11 @@
-    <h1>Welcome to concertify.me, <%= @user.name %></h1>
+    <h3>Thanks for using Concertify, <%= @user.name %></h3>
     <p>
-      You have successfully signed up to concertify.me.
-      <br>
+      To log in to the site, just follow this link: <%= @url %>.
     </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <br>
 
-==========
-TRYING OUT NEW FEATURES:
 <p> Event title: <%= @event.title %> </p>
 <p>Event date: <%=  @event.formatted_datetime %> </p>
 <p> Event location: <%=  @event.location %> </p>
 
+==========

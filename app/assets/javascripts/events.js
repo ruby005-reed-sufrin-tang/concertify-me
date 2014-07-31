@@ -2,7 +2,7 @@ $( document ).ready(function(){
   $('#email_event').click(function(e){
     e.preventDefault();
     var $form = $(this).closest('form');
-    alert("fas");
+    //alert("fas");
     
     $.ajax({
       url: '/emails',
