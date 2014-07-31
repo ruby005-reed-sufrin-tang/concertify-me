@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get '/about' => 'static_pages#about'
 
-  get 'auth/:provider/callback' => 'sessions#create'
-  get 'signout' => 'sessions#destroy', :as => :signout
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/signout' => 'sessions#destroy', :as => :signout
 
   post '/event_users' => 'event_users#create'
   get '/event_user' => 'event_users#create'
