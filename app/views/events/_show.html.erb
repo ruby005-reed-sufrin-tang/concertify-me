@@ -1,0 +1,13 @@
+<li><%= event.formatted_datetime %></li>
+  <ul>
+    <li><%= event.title %></li>
+    <% if show_save %>
+      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
+      <%= f.label :save_event%>
+    <% else %>
+      <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete do |f| %>
+        <%= f.hidden_field :event_id, :value => event.id %>
+        <%= f.submit "Delete", :id => 'delete_event', :class => "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </ul>

@@ -12,31 +12,31 @@
 
 
 <%= form_for EventUser.new do |f| %>
-<h2>Search results for <%= @request.artist %></h2>
-<ul>
-  <% @artist_events.each do |event| %>
-    <li><%= event.formatted_datetime %></li>
-    <ul>
-      <li><%= event.title %></li>
-      <li><%= event.location %></li>
-      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
-      <%= f.label :save_event%>
-    </ul>
+  <h2>Search results for <%= @request.artist %></h2>
+  <% if @artist_events.empty? %>
+    <p>No exact matches found</p>
+  <% else %>
+    <p><%= @artist_events.count %> exact matches found</p>
   <% end %>
-</ul>
-<h2>Related events</h2>
-<ul>
-  <% @related_events.each do |event| %>
-    <li><%= event.formatted_datetime %></li>
-    <ul>
-      <li><%= event.title %></li>
-      <li><%= event.location %></li>
-      <%= f.check_box "save_#{event.id}".to_sym, :checked => User.first.events.where(:events=>{id: event.id}).count == 1 %>
-      <%= f.label :save_event%>
-    </ul>
+  <ul>
+    <% @artist_events.each do |event| %>
+      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+    <% end %>
+  </ul>
+  <h2>Recommended events</h2>
+  <% if @related_events.empty? %>
+    <p>No recommended events found</p>
+  <% else %>
+    <p><%= @related_events.count %> recommended events found</p>
   <% end %>
-</ul>
-
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit "Save selected events", :class => "btn btn-success" %>
+  <ul>
+    <% @related_events.each do |event| %>
+      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+    <% end %>
+  </ul>
+  <% if @artist_events.any? || @related_events.any? %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit "Save selected events", :class => "btn btn-success" %>
+  <% end %>
 <% end %>
+
