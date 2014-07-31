@@ -1,1 +1,5 @@
+<% if !logged_in? %>
 Welcome to Concertify! Login with Spotify and find suggested concerts happening near you.
+<% else %>
+Welcome back <%= current_user.name %>!
+<% end %>

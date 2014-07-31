@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :sessions
-  resources :users, :only => [:new, :show, :index]
+  resources :users, :only => [:show, :index]
   resources :static_pages, :only => [:index, :about]
 
   root 'static_pages#index'

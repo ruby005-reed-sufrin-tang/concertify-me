@@ -1,8 +1,0 @@
-<% if current_user %>
-  <p>Welcome <%= current_user.name %>!</p>
-  <%= link_to "Search",  new_request_path%>
-  <%= link_to "Events",  user_path(current_user) %>
-  <%= link_to "Log Out", signout_path %>
-<% else %>
-  <%= link_to "Please log in with Spotify", "auth/spotify" %>
-<% end %>
