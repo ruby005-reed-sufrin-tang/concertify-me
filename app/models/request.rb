@@ -4,6 +4,8 @@ class Request < ActiveRecord::Base
   has_many :artists, through: :artist_requests
   has_many :event_requests
   has_many :events, through: :event_requests
+
+  validates :city,:state,:artist, presence: true
   
   def api_call
     artist_name = self.artist.gsub(" ","%20")
@@ -14,6 +16,7 @@ class Request < ActiveRecord::Base
   end
 
   def create_events(search_artist)
+
     @results.each do |result|
       event = Event.find_or_create_by(title: result["title"],
                                       formatted_datetime: result["formatted_datetime"],

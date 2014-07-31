@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
 
+
+
   SEARCH = [:artist,:city,:state]
 
   def index 
@@ -15,11 +17,12 @@ class RequestsController < ApplicationController
         current_user.spotify_artists.create(name: x) 
       end
     end
-
     @user = current_user
   end
 
   def create
+ 
+    @checkboxes = params["request"].collect {|x,y| x if y=="1"}.compact
     @request = Request.create(search_params)
     search_artist = Artist.find_or_create_by(name: search_params[:artist])
     search_artist.save
