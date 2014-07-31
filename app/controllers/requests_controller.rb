@@ -7,10 +7,14 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new  
+    @spotify_artists = current_user.all_playlists
+    @spotify_artists.each  do |x|
+      current_user.spotify_artists.create(name: x) 
+    end
+
   end
 
   def create
-
    
     @request = Request.create(search_params)
     artist = Artist.find_or_create_by(name: search_params[:artist])
@@ -40,19 +44,11 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @poop = current_user.all_playlists
+
     @request = Request.find(params[:id])
     @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true})
     @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false})
 
-    @work = @poop.collect do |artist_name|
-    city = @request.city.gsub(" ","+")
-    state = @request.state.gsub(" ","+")
-      link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=somuchpoop&api_version=2.0&location=#{city},#{state}&callback=showEvents"
-      encoded_url = URI.encode(link)
-      thing = URI.parse(encoded_url)
-      json = JSON.load(open(thing){|io| data= io.read}[11..-3])
-    end 
   end 
 
     
