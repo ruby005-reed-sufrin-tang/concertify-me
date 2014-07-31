@@ -16,32 +16,9 @@ class RequestsController < ApplicationController
     search_artist.save
     
     @request.artist_requests.create(artist_id: search_artist.id)
-    results = @request.api_call
+    @request.api_call
+    @request.create_events(search_artist)
 
-    results.each do |result|
-      event = Event.find_or_create_by(title: result["title"],
-                                      formatted_datetime: result["formatted_datetime"],
-                                      location: result["formatted_location"])
-      if !event.datetime || !event.facebook_rsvp_url || !event.ticket_url
-        event.datetime = result["datetime"]
-        event.ticket_url = result["ticket_url"]
-        event.facebook_rsvp_url = result["facebook_rsvp_url"]
-        event.save
-      end
-
-      result["artists"].each do |result_artist|
-        artist = Artist.find_or_create_by(name: result_artist["name"])
-        artist.thumb_url = result_artist["thumb_url"]
-        artist.save
-        event.artist_events.create(:artist_id => artist.id)
-      end
-
-      exact_match = ((result["artists"].select{|result_artist| result_artist["name"] == search_artist.name}).count >= 1)
-      
-      @request.event_requests.create(event_id: event.id, 
-                                     searched_artist_id: search_artist.id,
-                                     exact_match: exact_match)
-    end
     redirect_to request_url(@request)
   end
 
