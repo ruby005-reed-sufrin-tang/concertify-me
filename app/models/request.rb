@@ -4,6 +4,8 @@ class Request < ActiveRecord::Base
   has_many :artists, through: :artist_requests
   has_many :event_requests
   has_many :events, through: :event_requests
+
+  validates :city,:state,:artist, presence: true
   
   def api_call
     artist_name = self.artist.gsub(" ","%20")
@@ -13,7 +15,21 @@ class Request < ActiveRecord::Base
     @results = JSON.load(open(link){|io| data= io.read}[11..-3])
   end
 
+  def spotify_artists_call(checkboxes)
+    city = self.city.gsub(" ","+")
+    state = self.state.gsub(" ","+")
+    link = "http://api.bandsintown.com/events/search?artists[]="
+    link += checkboxes.join("&artists[]=").gsub(" ","%20")
+    link.gsub!("'","%27")
+    link += "&format=json&app_id=concertify&location="
+    link += city +","
+    link += state
+    @results = JSON.load(open(link))
+  end
+
+
   def create_events(search_artist)
+
     @results.each do |result|
       event = Event.find_or_create_by(title: result["title"],
                                       formatted_datetime: result["formatted_datetime"],

@@ -1,12 +1,31 @@
 
 
 <h1>Search for an artist to see shows near you</h1>
-<%= @spotify_artists %>
-<%= form_for(@request) do |t| %>
 
-<%= t.label :search %>
-<%=t.text_field :artist, placeholder: "artist"  %>
-<%=t.text_field :city, placeholder: "city"  %>
-<%=t.text_field :state, placeholder: "state"  %>
-<%=t.submit "Find Shows"%>
-<%end %>
+<%= form_for(@request) do |f| %>
+
+<%= f.label :search %>
+<%=f.text_field :artist, placeholder: "artist"  %>
+<%=f.text_field :city, placeholder: "city"  %>
+<%=f.text_field :state, placeholder: "state"  %>
+<%=f.submit "Find Shows"%>
+
+
+</br>
+
+
+  <h2>Search the following results from your spotify libray</h2>
+  <% if @user.spotify_artists.empty? %>
+    <p>No exact matches found</p>
+  <% else %>
+    <p><%= @user.spotify_artists.size %> exact matches found</p>
+  <% end %>
+  <ul>
+    <%@user.spotify_artists.sort.each do |artist| %>
+  <%= render 'spotify_artist/show', {:artist => artist, :f => f} %>
+   <% end %>
+ </br>
+   <%= f.submit :search_dat %>
+    <% end %>
+
+    
