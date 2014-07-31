@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @request = Request.new
     @spotify_artists = current_user.spotify_artists.to_a.collect {|artist| artist.name}
     if @spotify_artists.empty?
@@ -14,6 +15,8 @@ class RequestsController < ApplicationController
         current_user.spotify_artists.create(name: x) 
       end
     end
+
+    @user = current_user
   end
 
   def create
