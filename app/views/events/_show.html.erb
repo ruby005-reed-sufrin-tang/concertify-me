@@ -1,3 +1,5 @@
+
+ 
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title"><%= event.formatted_datetime %></h3>
@@ -20,11 +22,13 @@
           <%= f.hidden_field :event_id, :value => event.id %>
           <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
         <% end %>
-          <%= form_for Email.new, :method => :post, :html => {:class => "event-form"} do |f| %>
-          <%= f.hidden_field :event_id, :value => event.id %>
-          <%= f.submit "Send me an email reminder", :id => 'email_event', :class => "btn btn-info" %>
-          <% end %>
+           <%= form_for Email.new, :method => :post, :html => {:class => "event-form"} do |f| %>
+        <%= f.hidden_field :event_id, :value => event.id %>
+        <%= f.hidden_field :user_email, :value => current_user.email %>
+        <%= f.submit "Send me an email reminder", :class => "email_event btn btn-info" %>
+      <% end %>
       <% end %>
     </ul>
   </div>
 </div>
+
