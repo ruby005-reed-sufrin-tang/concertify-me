@@ -7,15 +7,6 @@
   <%= render 'events/show', {:event => event, :show_save => false} %>
 <% end %>
 </ul>
-<% if @events.count > 0 %>
-<br>
-<p>
-<%= form_for User.new do |f|%>
-<%= f.hidden_field :id, :value => current_user.id %>
-<%= f.text_field :email, :placeholder => "Email address" %>
-<%= f.submit :add_to_calendar, :id => 'add_to_calendar', :value => "Send me a Google invite!", :class => "btn btn-success" %>
-<% end %>
-</p>
-<% else %>
+<% if @events.count == 0 %>
   <%= link_to 'Try a search', new_request_path %>
 <% end %>

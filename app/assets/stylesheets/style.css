@@ -60,6 +60,7 @@ h2.center {
   text-align: center;
 }
 
+
 #error_messages_display {
   height:0px;
   width:0px;
@@ -67,5 +68,14 @@ h2.center {
   padding:10px;
   border:2px dashed red;
   display:none;
+}
+
+li.event-title {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.event-form {
+  display: inline;
 }
 

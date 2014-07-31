@@ -1,14 +1,8 @@
-<!--<h1>Your spotify artists</h1>
- <%#@work.each do |event|%>
-
-<li> <%#=event[0]["title"]%> </li>
-<li><%#=event[0]["formatted_datetime"]%></li>
-<li><%#=event[0]["location "]%></li>
-<%#end%>-->
 <h2><%= @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
 <h3><%= link_to 'Search again', new_request_path %></h3>
 
 <%= form_for EventUser.new do |f| %>
+
   <h2>Search results for <%= @request.artist %></h2>
   <% if @artist_events.empty? %>
     <p>No exact matches found</p>
@@ -20,6 +14,7 @@
       <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
     <% end %>
   </ul>
+
   <h2>Recommended events</h2>
   <% if @related_events.empty? %>
     <p>No recommended events found</p>
@@ -32,8 +27,8 @@
     <% end %>
   </ul>
   <% if @artist_events.any? || @related_events.any? %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.submit "Save selected events", :class => "btn btn-success" %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Save selected events", :class => "btn btn-success" %>
   <% end %>
 <% end %>
 

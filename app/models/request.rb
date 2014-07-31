@@ -32,7 +32,7 @@ class Request < ActiveRecord::Base
         event.artist_events.create(:artist_id => artist.id)
       end
 
-      exact_match = ((result["artists"].select{|result_artist| result_artist["name"] == search_artist.name}).count >= 1)
+      exact_match = ((result["artists"].select{|result_artist| result_artist["name"].downcase == search_artist.name.downcase }).count >= 1)
       
       event_requests.create(event_id: event.id, 
                             searched_artist_id: search_artist.id,

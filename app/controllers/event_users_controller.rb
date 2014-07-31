@@ -10,12 +10,12 @@ class EventUsersController < ApplicationController
         EventUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
       end
     end
-    redirect_to user_path(current_user)
+    redirect_to user_events_path(current_user)
   end
 
   def delete
     event_to_delete = EventUser.find_by(event_id: params[:event_user][:event_id], user_id: current_user.id)
     EventUser.destroy(event_to_delete.id)
-    redirect_to user_path(current_user)
+    redirect_to user_events_path(current_user)
   end
 end
