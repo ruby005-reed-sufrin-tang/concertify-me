@@ -34,9 +34,8 @@ class RequestsController < ApplicationController
     @request.create_events(search_artist)
     @spotify_events = @request.spotify_events_api_call(@checkboxes)
 
-    @request.create_events()
+    @request.create_events
 
-  
     redirect_to request_url(@request)
 
   end
