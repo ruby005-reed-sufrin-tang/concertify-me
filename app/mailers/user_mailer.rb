@@ -5,10 +5,6 @@ class UserMailer < ActionMailer::Base
     @event = event
     @user = user
     @url  = 'concertify.me'
-    #WE MUST REMEMBER TO TAKE THIS OUT
-    # if @user.email == "" || @user.email == nil
-    #   @user.email = "ilanasufrin@gmail.com"
-    # end
     mail(to: @user.email, subject: @event.title)
   end
 
