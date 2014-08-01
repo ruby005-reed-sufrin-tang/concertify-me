@@ -21,23 +21,27 @@ class RequestsController < ApplicationController
   end
 
   def create
-    binding.pry
- 
-    @checkboxes = params["request"].collect {|x,y| x if y=="1"}.compact
-    @request = Request.create(search_params)
-    search_artist = Artist.find_or_create_by(name: search_params[:artist])
-    search_artist.save
+    if search_params[:city].empty? || search_params[:state].empty?
+      flash[:error] = "A city and state are required"
+      redirect_to new_request_path
+    else
+      binding.pry
+      @checkboxes = params["request"].collect {|x,y| x if y=="1"}.compact
+      @request = Request.create(search_params)
+      search_artist = Artist.find_or_create_by(name: search_params[:artist])
+      search_artist.save
 
-    
-    
-    @request.artist_requests.create(artist_id: search_artist.id)
-    @request.api_call
-    @request.create_events(search_artist)
-    @spotify_events = @request.spotify_events_api_call(@checkboxes)
+      
+      
+      @request.artist_requests.create(artist_id: search_artist.id)
+      @request.api_call
+      @request.create_events(search_artist)
+      @spotify_events = @request.spotify_events_api_call(@checkboxes)
 
-    @request.create_events
+      @request.create_events
 
-    redirect_to request_url(@request)
+      redirect_to request_url(@request)
+    end
 
   end
 

@@ -1,6 +1,7 @@
-<li><%= artist.name %></li>
-<%= f.check_box "#{artist.name}".to_sym, :checked => false%>
-<%= f.label :select_artist,"Select Artist"%>
+<li>
+<%= f.check_box "#{artist.name}".to_sym, :checked => false %>
+<%= f.label "#{artist.name}".to_sym, artist.name %>
+</li>
 
 
 
