@@ -4,6 +4,7 @@ class Request < ActiveRecord::Base
   has_many :artists, through: :artist_requests
   has_many :event_requests
   has_many :events, through: :event_requests
+  has_many :spotify_events
 
   validates :city,:state,:artist, presence: true
   
