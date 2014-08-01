@@ -7,6 +7,9 @@ $( document ).ready(function(){
     //change the div's css
     $("#error_messages_display").css({ "width": "300px", "height": "75px", "display": "table" });
     }
+  else {
+      $("#success_messages_display").css({ "width": "300px", "height": "75px", "display": "table" });
+  }
 
     $.ajax({
       url: '/emails',

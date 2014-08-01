@@ -71,6 +71,15 @@ h2.center {
   display:none;
 }
 
+#success_messages_display {
+  height:0px;
+  width:0px;
+  color:green;
+  padding:10px;
+  border:2px dashed blue;
+  display:none;
+}
+
 li.event-title {
   list-style-type: none;
   margin-bottom: 10px;
