@@ -2,30 +2,32 @@
 <h3><%= link_to 'Search again', new_request_path %></h3>
 
 <%= form_for EventUser.new do |f| %>
-
-  <h2>Spotify Artist Results</h2>
-  <% if @spotify_events.empty? %>
-    <p>No exact matches found</p>
-  <% else %>
-    <p><%= @spotify_events.count %> exact matches found</p>
-  <% end %>
-  <ul>
-    <% @spotify_events.each do |event| %>
-      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+  <% if !@request.spotify_artists.empty? %>
+    <h2>Spotify Artist Results</h2>
+    <% if @spotify_events.empty? %>
+      <p>No exact matches found</p>
+    <% else %>
+      <p><%= @spotify_events.count %> exact matches found</p>
     <% end %>
-  </ul>
-
-  <h2>Search results for <%= @request.artist %></h2>
-  <% if @artist_events.empty? %>
-    <p>No exact matches found</p>
-  <% else %>
-    <p><%= @artist_events.count %> exact matches found</p>
+    <ul>
+      <% @spotify_events.each do |event| %>
+        <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+      <% end %>
+    </ul>
   <% end %>
-  <ul>
-    <% @artist_events.each do |event| %>
-      <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+  <% if !@request.artist.empty? %>
+    <h2>Search results for <%= @request.artist %></h2>
+    <% if @artist_events.empty? %>
+      <p>No exact matches found</p>
+    <% else %>
+      <p><%= @artist_events.count %> exact matches found</p>
     <% end %>
-  </ul>
+    <ul>
+      <% @artist_events.each do |event| %>
+        <%= render 'events/show', {:event => event, :show_save => true, :f => f} %>
+      <% end %>
+    </ul>
+  <% end %>
 
   <h2>Recommended events</h2>
   <% if @related_events.empty? %>

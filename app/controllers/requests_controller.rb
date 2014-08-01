@@ -14,9 +14,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-
-
-
     if search_params[:city].empty? || search_params[:state].empty?
       address = Geocoder.address(remote_ip).split(', ')
       if address[2] == "United States"

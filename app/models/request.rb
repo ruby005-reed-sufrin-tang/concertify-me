@@ -63,7 +63,7 @@ class Request < ActiveRecord::Base
 
       if !!search_artist.name
         exact_match = ((result["artists"].select{|result_artist| result_artist["name"].downcase == search_artist.name.downcase }).count >= 1)
-    else
+      else
         exact_match = false
       end
       event_requests.create(event_id: event.id, 
