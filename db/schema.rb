@@ -91,18 +91,6 @@ ActiveRecord::Schema.define(version: 20140801043311) do
     t.datetime "updated_at"
   end
 
-  create_table "spotify_events", force: true do |t|
-    t.string   "title"
-    t.datetime "datetime"
-    t.string   "formatted_datetime"
-    t.string   "location"
-    t.string   "ticket_url"
-    t.string   "facebook_rsvp_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "provider"
