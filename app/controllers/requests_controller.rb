@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
       flash[:error] = "A city and state are required!"
       redirect_to new_request_path and return
     else
-      @request = Request.create(search_params)
+      @request = Request.new(search_params)
       @request.spotify_artists = params["request"].collect {|x,y| x if y=="1"}.compact.join(",")
       if @request.artist.empty? && @request.spotify_artists.empty?
         flash[:error] = "Must include at least one artist in search!"
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
           search_artist = Artist.find_or_create_by(name: search_params[:artist])
           @request.artist_requests.create(artist_id: search_artist.id)
           current_user.artist_users.find_or_create_by(artist_id: search_artist.id)
-          @request.api_call()
+          @request.api_call
           @request.create_events(search_artist)
         end
 
@@ -57,7 +57,6 @@ class RequestsController < ApplicationController
         redirect_to new_request_path and return
       end
     end
-
   end
 
   def show
