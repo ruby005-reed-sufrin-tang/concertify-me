@@ -3930,6 +3930,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -5494,6 +5495,8 @@ button.close {
     width: 900px;
   }
 }
+
+
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -6200,4 +6203,6 @@ button.close {
     display: none !important;
   }
 }
+
+
 /*# sourceMappingURL=bootstrap.css.map */
