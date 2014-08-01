@@ -9,7 +9,7 @@
 }
 
 body {
-  background: url('https://farm3.staticflickr.com/2382/2045735047_b864159e51_b.jpg');
+  background: url('/assets/concert.jpg');
   background-size: cover;
   margin: 0;
   height: 100%;
@@ -19,8 +19,9 @@ body {
 .content {
   background-color: #fff;
   border-radius: 6px;
-  min-height: 300px;
+  min-height: 200px;
   padding-top: 10px;
+  margin-top: 50px;
   padding-bottom: 50px;
   width: 80%;
 }
