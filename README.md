@@ -2,11 +2,15 @@
 
 ## Description
 
-Concertify is an app that suggests local concerts based on the artists in your spotify playlist. It lets you search for, save, and obtain insight into events near you.
+[Concertify](www.concertify.me) is an app that suggests local concerts based on the artists in your spotify playlist. It lets you search for, save, and obtain insight into events near you.
 
 ## Screenshots
 
-Add some spiffy screenshots of your app here.
+![](http://i.imgur.com/VsNtyhS.png)
+
+![](http://i.imgur.com/T6z1Xnp.png)
+
+![](http://i.imgur.com/T6z1Xnp.png)
 
 ## Background
 
@@ -25,7 +29,7 @@ Some of the nifty things Concertify does:
 
 ## Usage
 
-How do users use your app?
+Go to [Concertify](www.concertify.me)
 
 ## Development/Contribution
 
@@ -33,12 +37,13 @@ If you have any questions or concerns about Concertify (or ideas for features) p
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+We're thinking of integrating with the Google Calendar API but it doesn't seem necessary.
 
-## Author
+## Authors
 
-Link to your blog, twitter, etc!
+- [Randall Reed](https://twitter.com/randallocalypse)
+- [Spencer Tang](https://twitter.com/spencert0ng)
+- [Ilana Sufrin](https://twitter.com/IlanaSufrin)
 
 ## License
 
