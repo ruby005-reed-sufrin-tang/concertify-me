@@ -98,3 +98,7 @@ li.event-title {
 #btn-search {
   margin-top: 10px;
 }
+
+li.inline-form {
+  padding-bottom: 5px;
+}

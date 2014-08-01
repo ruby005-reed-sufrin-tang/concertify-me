@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   resources :requests
 
   patch '/spotify_artists' => 'spotify_artists#update'
-
+  get '/user/:id/artist_users/:id' => 'artist_users#show', :as => :artist_user
+  delete '/user/:id/artist_users/:id' => 'artist_users#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

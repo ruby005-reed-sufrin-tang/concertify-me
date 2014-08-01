@@ -16,7 +16,7 @@
       <% end %>
     </ul>
   <% else %>
-    <%= link_to 'Visit the Artists page to load your favorite artists from your Spotify library', user_artists_path %>
+    <%= link_to 'Visit the Artists page to load your favorite artists from your Spotify library', user_artists_path(current_user) %>
   <% end %>
   <br>
   <%=f.submit "Find Shows", :id => "btn-search", :class => "btn btn-success"%>
