@@ -20,3 +20,6 @@
 /app/assets/.DS_Store
 /app/assets/stylesheets/.DS_Store
 /app/assets/javascripts/.DS_Store
+
+#private application keys
+./config/locales/application.yml
