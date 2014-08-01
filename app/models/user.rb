@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :events, through: :event_users
   has_many :spotify_artists
   has_many :spotify_events
+  has_many :artist_users
+  has_many :artists, through: :artist_users
 
 
 
@@ -29,7 +31,9 @@ class User < ActiveRecord::Base
     end.flatten
     artist_count = artists.inject(Hash.new(0)) {|hash,artist| hash[artist] += 1;hash}
     artist_count_sort = artist_count.sort_by { |k, v| v }.reverse
-    artist_count_sort.collect {|x| x[0]}[0..9]
+    artist_count_sort.collect { |x| 
+      x[0]
+      }.reject(&:empty?)[0..9]
   end
 
 end

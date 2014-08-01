@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users, :only => [:show, :index] do
     resources :events
+    resources :artists
   end
   resources :static_pages, :only => [:index, :about]
 

@@ -79,3 +79,12 @@ li.event-title {
   display: inline;
 }
 
+#double li {
+  width: 50%;
+  float: left;
+  display: inline;
+}
+
+#btn-search {
+  margin-top: 10px;
+}
