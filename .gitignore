@@ -22,4 +22,4 @@
 /app/assets/javascripts/.DS_Store
 
 #private application keys
-./config/locales/application.yml
+./config/application.yml
