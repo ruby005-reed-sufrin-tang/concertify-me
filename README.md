@@ -1,8 +1,8 @@
-# Concertify Me
+# Concertify
 
 ## Description
 
-Add a short description of your app.
+Concertify is an app that suggests local concerts based on the artists in your spotify playlist. It lets you search for, save, and obtain insight into events near you.
 
 ## Screenshots
 
@@ -10,8 +10,7 @@ Add some spiffy screenshots of your app here.
 
 ## Background
 
-Why did you want to make this app? What was your development process
-like?
+Randall, Spencer, and Ilana made this app with love during project mode at the Flatiron School.
 
 ## Features
 
@@ -23,8 +22,7 @@ How do users use your app?
 
 ## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+If you have any questions or concerns about Concertify (or ideas for features) please send an email to concertify@gmail.com.
 
 ## Future
 
@@ -37,4 +35,5 @@ Link to your blog, twitter, etc!
 
 ## License
 
-Concertify Me is MIT Licensed. See LICENSE for details.
+Concertify is MIT Licensed. See LICENSE for details.
+
