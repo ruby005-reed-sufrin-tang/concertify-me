@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
 
   def self.find_by_provider_and_uid(provider, uid)
     where(provider: provider, uid: uid).first
-    binding.pry
   end
 
   def all_playlists
