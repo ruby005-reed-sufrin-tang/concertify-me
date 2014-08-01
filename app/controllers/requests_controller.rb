@@ -58,7 +58,7 @@ class RequestsController < ApplicationController
 
       redirect_to request_url(@request)
     rescue Exception => e
-      #binding.pry
+ 
       flash[:notice] = "Search failed! Please verify your parameters."
       redirect_to new_request_path and return
     end
@@ -71,11 +71,19 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @spot = @request.spotify_artists.split(",")
     @spot.each do |spot|
-    @request.events.each {|x| x.update(spotify_event: true) if x.title.include?(spot)}
+      @request.event_requests.each do |x|
+        if x.event.title.include?(spot)
+        
+            x.update(spotify_event: true)
+            x.save 
+        end
+      end
     end
 
-    binding.pry
-    @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true})
+    
+
+    @spotify_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true, :spotify_event => true})
+    @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true, :spotify_event => false})
     @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false})
   end 
 
