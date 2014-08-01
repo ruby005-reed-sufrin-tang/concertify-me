@@ -18,11 +18,12 @@
         <form action="<%= event.facebook_rsvp_url %>" target="_blank" class="inline-form">
           <input type="submit" value="RSVP on Facebook" class="btn btn-primary">
         </form>
-        <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete, :html => {:class => "inline-form"} do |f| %>
+        <%= form_for EventUser.find_by(:event_id => event.id, :user_id => current_user.id), :method => :delete, :html => {:class => "inline-form"}, data: { confirm: "Are you sure you want to delete this event?" } do |f| %>
           <%= f.hidden_field :event_id, :value => event.id %>
           <%= f.submit "Delete from My Events", :id => 'delete_event', :class => "btn btn-danger" %>
         <% end %>
-           <%= form_for Email.new, :method => :post, :html => {:class => "inline-form"} do |f| %>
+
+        <%= form_for Email.new, :method => :post, :html => {:class => "inline-form"} do |f| %>
         <%= f.hidden_field :event_id, :value => event.id %>
         <%= f.hidden_field :user_email, :value => current_user.email %>
         <%= f.submit "Send me an email reminder", :class => "email_event btn btn-info" %>
