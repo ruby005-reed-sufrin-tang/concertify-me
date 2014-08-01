@@ -22,25 +22,40 @@ class RequestsController < ApplicationController
 
   def create
     if search_params[:city].empty? || search_params[:state].empty?
-      flash[:error] = "A city and state are required"
-      redirect_to new_request_path
+      flash[:error] = "A city and state are required!"
+      redirect_to new_request_path and return
     else
-      binding.pry
-      @checkboxes = params["request"].collect {|x,y| x if y=="1"}.compact
       @request = Request.create(search_params)
-      search_artist = Artist.find_or_create_by(name: search_params[:artist])
-      search_artist.save
+      @request.spotify_artists = params["request"].collect {|x,y| x if y=="1"}.compact.join(",")
+      if @request.artist.empty? && @request.spotify_artists.empty?
+        flash[:error] = "Must include at least one artist in search!"
+        redirect_to new_request_path and return
+      end
+      @request.save
+      begin
+        if !@request.artist.empty?
+          search_artist = Artist.find_or_create_by(name: search_params[:artist])
+          @request.artist_requests.create(artist_id: search_artist.id)
+          @request.api_call()
+          @request.create_events(@request.artist)
+        end
 
-      
-      
-      @request.artist_requests.create(artist_id: search_artist.id)
-      @request.api_call
-      @request.create_events(search_artist)
-      @spotify_events = @request.spotify_events_api_call(@checkboxes)
+        @request.spotify_artists.split(",").each do |artist|
+          search_artist = Artist.find_or_create_by(name: artist)
+          ar = @request.artist_requests.build(artist_id: search_artist.id)
+          ar.save
+        end
 
-      @request.create_events
+        if !@request.spotify_artists.empty?
+          @spotify_events = @request.spotify_events_api_call()
+          @request.create_events
+        end
 
-      redirect_to request_url(@request)
+        redirect_to request_url(@request)
+      rescue Exception => e
+        flash[:notice] = "Search failed! Please verify your parameters."
+        redirect_to new_request_path and return
+      end
     end
 
   end

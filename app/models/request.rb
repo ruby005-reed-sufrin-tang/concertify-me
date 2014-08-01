@@ -6,7 +6,7 @@ class Request < ActiveRecord::Base
   has_many :events, through: :event_requests
   has_many :spotify_events
 
-  validates :city,:state,:artist, presence: true
+  validates :city,:state, presence: true
   
   def api_call
     artist_name = self.artist.gsub(" ","%20")
@@ -18,17 +18,14 @@ class Request < ActiveRecord::Base
 
 
 
-  def spotify_events_api_call(checkboxes)
+  def spotify_events_api_call()
     city = self.city.gsub(" ","+")
     state = self.state.gsub(" ","+")
-    checkboxes.each do |artist|
-      a = artist.dup
-      a.gsub!(" ","%20")
-      a.gsub!("'","%27")
-     artist_name = a
-    link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=concertify&api_version=2.0&location=#{city},#{state}&callback=showEvents"    
-    @results = JSON.load(open(link){|io| data= io.read}[11..-3])
-  end
+    spotify_artists.split(",").each do |artist|
+      artist_name = artist.gsub(" ","%20").gsub("'","%27").downcase
+      link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=concertify&api_version=2.0&location=#{city},#{state}&callback=showEvents"
+      @results = JSON.load(open(link){|io| data= io.read}[11..-3])
+    end
   end
 
   # def spotify_artists_call(checkboxes)
