@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require google_analytics
-//= events
-//= users
+//= require events
+//= require users
 
 
