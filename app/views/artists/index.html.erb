@@ -1,7 +1,11 @@
 <h2>Artists you've searched for</h2>
-<ul>
+<ul id="double">
 <% @artists.each do |artist| %>
-  <li><%= artist.name %></li>
+  <li class="inline-form"><%= artist.name %></li>
+  <li class="inline-form"><%= form_for ArtistUser.find_by(:artist_id => artist.id, :user_id => current_user.id), :method => :delete, :html => {:class => "inline-form"}, data: { confirm: "Are you sure you want to delete this artist?" } do |f| %>
+          <%= f.hidden_field :artist_id, :value => artist.id %>
+          <%= f.submit "Delete from My Artists", :id => 'delete_event', :class => "btn btn-danger btn-sm" %>
+        <% end %></li>
 <% end %>
 </ul>
 
