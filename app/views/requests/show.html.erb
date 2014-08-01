@@ -1,4 +1,4 @@
-<h2><%= @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
+<h2><%= @spotify_events.count + @artist_events.count + @related_events.count %> events found near <%= "#{@request.city}, #{@request.state}" %>!</h2>
 <h3><%= link_to 'Search again', new_request_path %></h3>
 
 <%= form_for EventUser.new do |f| %>
