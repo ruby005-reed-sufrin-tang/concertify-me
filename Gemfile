@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 
 gem 'omniauth-spotify'
 gem "google-api-client"
+gem 'geocoder'
 
 group :test, :development do
   gem "rspec-rails"

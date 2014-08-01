@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
   has_many :artist_users
   has_many :artists, through: :artist_users
 
-
-
  def self.create_from_omniauth(auth_hash)
   self.create(provider: auth_hash[:provider],
               uid: auth_hash[:uid],
               name: auth_hash[:info][:name],
               email: auth_hash[:info][:email],
-              token: auth_hash[:credentials][:token]
+              token: auth_hash[:credentials][:token],
+              refresh_token: auth_hash[:credentials][:refresh_token]
               )
   end
 

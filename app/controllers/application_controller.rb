@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  def remote_ip
+    if request.remote_ip == '127.0.0.1'
+      # Hard coded remote address
+      '108.41.22.45'
+    else
+      request.remote_ip
+    end
+  end
+
 private
   helper_method def logged_in?
     !!current_user
