@@ -21,6 +21,7 @@ class RequestsController < ApplicationController
   end
 
   def create
+    binding.pry
  
     @checkboxes = params["request"].collect {|x,y| x if y=="1"}.compact
     @request = Request.create(search_params)
