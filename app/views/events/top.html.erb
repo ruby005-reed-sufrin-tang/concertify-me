@@ -3,8 +3,18 @@
 <% else %>
 <h2>Most Saved Events for <%= @location %></h2>
 <% end %>
-<ol>
-<% @top_events.each do |event| %>
-<li><%= "#{event["title"]} (saved by #{event["count"]} #{'user'.pluralize(event["count"])})" %></li>
+
+<% if @top_events.any? %>
+  <%= form_for EventUser.new do |f| %>
+    <ol>
+      <% @top_events.each do |event| %>
+        <%= "#{event["title"]} (saved by #{event["count"]} #{'user'.pluralize(event["count"])})" %>
+        <%= f.check_box "save_#{event["id"]}".to_sym, :checked => current_user.events.where(:events=>{id: event["id"]}).count == 1 %>
+        <%= f.label :save_event%>
+    <% end %>
+    <ol>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit "Save selected events", :class => "btn btn-success" %>
+  <% end %>
 <% end %>
-<ol>
