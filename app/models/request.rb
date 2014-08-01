@@ -16,15 +16,14 @@ class Request < ActiveRecord::Base
     @results = JSON.load(open(link){|io| data= io.read}[11..-3])
   end
 
-
-
   def spotify_events_api_call()
     city = self.city.gsub(" ","+")
     state = self.state.gsub(" ","+")
+    @results ||= []
     spotify_artists.split(",").each do |artist|
       artist_name = artist.gsub(" ","%20").gsub("'","%27").downcase
       link = "http://api.bandsintown.com/artists/#{artist_name}/events/recommended?format=json&app_id=concertify&api_version=2.0&location=#{city},#{state}&callback=showEvents"
-      @results = JSON.load(open(link){|io| data= io.read}[11..-3])
+      @results.concat JSON.load(open(link){|io| data= io.read}[11..-3])
     end
   end
 
