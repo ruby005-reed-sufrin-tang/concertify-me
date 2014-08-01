@@ -1,0 +1,10 @@
+<% if @location == "" %>
+<h2>Most Saved Events</h2>
+<% else %>
+<h2>Most Saved Events for <%= @location %></h2>
+<% end %>
+<ol>
+<% @top_events.each do |event| %>
+<li><%= "#{event["title"]} (saved by #{event["count"]} #{'user'.pluralize(event["count"])})" %></li>
+<% end %>
+<ol>
