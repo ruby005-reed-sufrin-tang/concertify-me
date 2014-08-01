@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :events, through: :event_users
   has_many :spotify_artists
   has_many :spotify_events
+  has_many :artist_users
+  has_many :artists, through: :artist_users
 
 
 

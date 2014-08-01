@@ -11,8 +11,8 @@
   <% if current_user.spotify_artists.any? %>
     <h2>or choose from the Top <%= current_user.spotify_artists.size %> artists in your Spotify library </h2>
     <ul id="double">
-      <% @user.spotify_artists.sort.each do |artist| %>
-        <%= render 'spotify_artist/show', {:artist => artist, :f => f} %>
+      <% current_user.spotify_artists.sort.each do |artist| %>
+        <%= render 'spotify_artists/show', {:artist => artist, :f => f} %>
       <% end %>
     </ul>
   <% end %>

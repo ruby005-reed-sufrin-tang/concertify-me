@@ -1,0 +1,13 @@
+<h2>Artists you've searched for</h2>
+<ul>
+<% @artists.each do |artist| %>
+  <li><%= artist.name %></li>
+<% end %>
+</ul>
+
+<h2>Artists from your Spotify library</h2>
+<ul>
+<% @spotify_artists.each do |artist| %>
+  <li><%= artist.name %></li>
+<% end %>
+</ul>

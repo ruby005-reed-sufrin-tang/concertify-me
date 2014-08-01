@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801012228) do
+ActiveRecord::Schema.define(version: 20140801020226) do
 
   create_table "artist_events", force: true do |t|
     t.integer  "artist_id"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140801012228) do
   create_table "artist_requests", force: true do |t|
     t.integer  "request_id"
     t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "artist_users", force: true do |t|
+    t.integer  "artist_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

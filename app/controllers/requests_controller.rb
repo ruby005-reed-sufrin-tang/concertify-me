@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @request = Request.new
     @spotify_artists = current_user.spotify_artists.to_a.collect {|artist| artist.name}
     if @spotify_artists.empty?
@@ -17,7 +16,6 @@ class RequestsController < ApplicationController
         current_user.spotify_artists.create(name: x) 
       end
     end
-    @user = current_user
   end
 
   def create
@@ -36,8 +34,9 @@ class RequestsController < ApplicationController
         if !@request.artist.empty?
           search_artist = Artist.find_or_create_by(name: search_params[:artist])
           @request.artist_requests.create(artist_id: search_artist.id)
+          current_user.artist_users.find_or_create_by(artist_id: search_artist.id)
           @request.api_call()
-          @request.create_events(@request.artist)
+          @request.create_events(search_artist)
         end
 
         @request.spotify_artists.split(",").each do |artist|
@@ -53,6 +52,7 @@ class RequestsController < ApplicationController
 
         redirect_to request_url(@request)
       rescue Exception => e
+        binding.pry
         flash[:notice] = "Search failed! Please verify your parameters."
         redirect_to new_request_path and return
       end
