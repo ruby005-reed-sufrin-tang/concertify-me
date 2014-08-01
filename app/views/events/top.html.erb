@@ -8,9 +8,11 @@
   <%= form_for EventUser.new do |f| %>
     <ol>
       <% @top_events.each do |event| %>
+      <li>
         <%= "#{event["title"]} (saved by #{event["count"]} #{'user'.pluralize(event["count"])})" %>
         <%= f.check_box "save_#{event["id"]}".to_sym, :checked => current_user.events.where(:events=>{id: event["id"]}).count == 1 %>
         <%= f.label :save_event%>
+        </li>
     <% end %>
     <ol>
 
