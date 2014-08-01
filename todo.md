@@ -10,6 +10,7 @@ Upcoming
 - Update readme (Ilana)
 - Top shows
 - Group events by date?
+- Set up Google Analytics (Ilana)
 
 Optional features
 - Add threading for multiple artists?
