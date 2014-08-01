@@ -19,6 +19,9 @@ class RequestsController < ApplicationController
   end
 
   def create
+
+
+
     if search_params[:city].empty? || search_params[:state].empty?
       flash[:error] = "A city and state are required!"
       redirect_to new_request_path and return
@@ -57,11 +60,21 @@ class RequestsController < ApplicationController
         redirect_to new_request_path and return
       end
     end
+
+
+   
+    
   end
 
   def show
 
     @request = Request.find(params[:id])
+    @spot = @request.spotify_artists.split(",")
+    @spot.each do |spot|
+    @request.events.each {|x| x.update(spotify_event: true) if x.title.include?(spot)}
+    end
+
+    binding.pry
     @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true})
     @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false})
   end 
