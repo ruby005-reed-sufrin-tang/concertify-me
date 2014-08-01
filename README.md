@@ -2,7 +2,7 @@
 
 ## Description
 
-[Concertify](www.concertify.me) is an app that suggests local concerts based on the artists in your spotify playlist. It lets you search for, save, and obtain insight into events near you.
+[Concertify](http://www.concertify.me) is an app that suggests local concerts based on the artists in your spotify playlist. It lets you search for, save, and obtain insight into events near you.
 
 ## Screenshots
 
@@ -29,7 +29,7 @@ Some of the nifty things Concertify does:
 
 ## Usage
 
-Go to [Concertify](www.concertify.me)
+Go to [www.Concertify.me](http://www.concertify.me)
 
 ## Development/Contribution
 
