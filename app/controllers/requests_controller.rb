@@ -84,7 +84,8 @@ class RequestsController < ApplicationController
 
     @spotify_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true, :spotify_event => true})
     @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true, :spotify_event => false})
-    @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false})
+    binding.pry
+    @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false,:spotify_event => false})
   end 
 
   private
