@@ -9,13 +9,12 @@
 <% end %>
 </ul>
 
-<h2>Artists from your Spotify library
-<%= form_for SpotifyArtist.new, :method => :patch, :html => {:class => "inline-form"} do |f| %>
-  <%= f.submit 'Refresh', :class => "btn btn-success"  %>
-<% end %>
-</h2>
+<h2>Artists from your Spotify library</h2>
 <ul>
 <% @spotify_artists.each do |artist| %>
   <li><%= artist.name %></li>
 <% end %>
 </ul>
+<%= form_for SpotifyArtist.new, :method => :patch, :html => {:class => "inline-form"} do |f| %>
+  <%= f.submit 'Refresh', :class => "btn btn-success"  %>
+<% end %>
