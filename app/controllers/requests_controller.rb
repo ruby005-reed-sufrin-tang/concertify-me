@@ -74,7 +74,6 @@ class RequestsController < ApplicationController
     @request.events.each {|x| x.update(spotify_event: true) if x.title.include?(spot)}
     end
 
-    binding.pry
     @artist_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => true})
     @related_events = Event.joins(:event_requests).where(:event_requests => {:request_id => @request.id, :exact_match => false})
   end 
