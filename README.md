@@ -14,7 +14,14 @@ Randall, Spencer, and Ilana made this app with love during project mode at the F
 
 ## Features
 
-Bullet point some of the key features of your app here.
+Some of the nifty things Concertify does:
+
+- Uses the Spotify API to import artists
+- Automatically detects your location
+- Shows you the most popular events near you
+- Sends you emails with event details
+- Links to buy tickets and share the event on Facebook
+- Recommends similar artists based on your searches
 
 ## Usage
 
