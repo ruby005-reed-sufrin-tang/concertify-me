@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     resources :artists
   end
   resources :static_pages, :only => [:index, :about]
-
   root 'static_pages#index'
   get '/about' => 'static_pages#about'
+
+  get '/events/top' => 'events#top', :as => :top_events
 
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signout' => 'sessions#destroy', :as => :signout
