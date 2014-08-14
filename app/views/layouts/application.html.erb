@@ -9,6 +9,11 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
+  <ul class="cb-slideshow" id = "slidelist">
+        <li><span>Image 01</span></li>
+            <li><span>Image 02</span></li>
+            <li><span>Image 03</span></li>
+    </ul>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -43,16 +48,18 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <div class="clr"></div>
 
 
 <div class="container content">
+  
 <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
 <%= yield %>
 </div>
 <div class="footer">
-Built with &#9825; at the <a href="http://www.flatironschool.com" target="_blank">Flatiron School</a>
+Built with &#9825; at the <a href="http://www.flatironschool.com" target="_blank">Flatiron School</a> <br>
 <span style="float:left;padding-left:2px;">  &#169; Copyright 2014 MIT License</span>
 </div>
 
