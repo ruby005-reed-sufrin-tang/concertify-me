@@ -1,3 +1,15 @@
+.biopic {
+  width: 200px;
+  height: 300px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(http://link-to-your/image.jpg) no-repeat;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  }
+
 .footer {
   text-align: center;
   font-size: 14px;
@@ -9,22 +21,25 @@
   text-shadow: 0.1em 0.1em 0.2em black
 }
 
-body {
-  background:url('/assets/concert.jpg') no-repeat center center fixed; 
+/*body {
+
+  background:url('/assets/crowd.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
+*/
 .content {
-  background-color: #fff;
+  color:white;
   border-radius: 6px;
   min-height: 200px;
   padding-top: 10px;
   margin-top: 50px;
   padding-bottom: 50px;
   width: 80%;
+  position: fixed;
+  margin-left:20%;
 }
 
 .bio {
@@ -102,4 +117,8 @@ li.event-title {
 
 li.inline-form {
   padding-bottom: 5px;
+}
+
+#slidelist {
+  list-style: none;
 }
