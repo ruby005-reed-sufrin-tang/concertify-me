@@ -11,8 +11,9 @@
 <body>
   <ul class="cb-slideshow" id = "slidelist">
         <li><span>Image 01</span></li>
-            <li><span>Image 02</span></li>
-            <li><span>Image 03</span></li>
+        <li><span>Image 02</span></li>
+        <li><span>Image 03</span></li>
+        <li><span>Image 04</span></li>
     </ul>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -28,7 +29,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to 'Home', root_url %></li>
             <li><a href="/about">About</a></li>
             <% if logged_in? %>
               <li><%= link_to 'Search', new_request_path %></li>
